@@ -21,3 +21,7 @@ pokemon_df = pd.read_csv("pokemon_data.csv")
 
 ''' Reading a data within a specific row '''
 print(pokemon_df.iloc[2,1])
+
+'''Iterate over DataFrame rows'''
+for index,row in pokemon_df.iterrows():
+     print(index,row['Name'])
