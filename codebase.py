@@ -7,11 +7,17 @@ pokemon_df = pd.read_csv("pokemon_data.csv")
 # print(pokemon_df_txt.head(3))
 
 ''' Reading Headers '''
-print(pokemon_df.columns)
+# print(pokemon_df.columns)
 
 ''' Reading Specific Column Values '''
 # print(pokemon_df['Name'][0:10])
 
 ''' Reading Multiple Column Values '''
-print(pokemon_df[['Name','Defense']][0:10])
+# print(pokemon_df[['Name','Defense']][0:10])
 
+''' Getting specific rows '''
+# print(pokemon_df.iloc[3])
+# print(pokemon_df.iloc[1:4])
+
+''' Reading a data within a specific row '''
+print(pokemon_df.iloc[2,1])
