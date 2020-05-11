@@ -30,4 +30,18 @@ pokemon_df = pd.read_csv("pokemon_data.csv")
 '''Accessing Rows where type1 is fire'''
 # print(pokemon_df.loc[pokemon_df['Type 1'] == "Fire"])
 
-print(pokemon_df.loc[pokemon_df['Type 1'] == 'Grass'])
+# print(pokemon_df.loc[pokemon_df['Type 1'] == 'Grass'])
+
+
+'''Sorting & describing Data'''
+# print(pokemon_df.describe())
+
+'''Sorting by Name'''
+# print(pokemon_df.sort_values('Name').head(5))
+# print(pokemon_df.sort_values('Name').tail(5))
+
+'''Sorting by Name Descending'''
+# print(pokemon_df.sort_values('Name',ascending=False))
+
+'''Sorting two fields'''
+# print(pokemon_df.sort_values(['Type 1','HP'],ascending=[1,0]))
