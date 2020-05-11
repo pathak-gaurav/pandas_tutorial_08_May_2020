@@ -20,8 +20,14 @@ pokemon_df = pd.read_csv("pokemon_data.csv")
 # print(pokemon_df.iloc[1:4])
 
 ''' Reading a data within a specific row '''
-print(pokemon_df.iloc[2,1])
+# print(pokemon_df.iloc[2,1])
 
 '''Iterate over DataFrame rows'''
-for index,row in pokemon_df.iterrows():
-     print(index,row['Name'])
+# for index,row in pokemon_df.iterrows():
+    # print(index,row['Name'])
+
+
+'''Accessing Rows where type1 is fire'''
+# print(pokemon_df.loc[pokemon_df['Type 1'] == "Fire"])
+
+print(pokemon_df.loc[pokemon_df['Type 1'] == 'Grass'])
