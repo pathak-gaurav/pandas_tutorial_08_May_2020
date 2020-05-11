@@ -45,3 +45,26 @@ pokemon_df = pd.read_csv("pokemon_data.csv")
 
 '''Sorting two fields'''
 # print(pokemon_df.sort_values(['Type 1','HP'],ascending=[1,0]))
+
+
+'''======================='''
+'''Making Changes to Data'''
+'''======================='''
+
+# print(pokemon_df.columns)
+'''Adding a Column in DF'''
+# pokemon_df['Total'] = pokemon_df['HP'] + pokemon_df['Attack'] + pokemon_df['Defense'] + pokemon_df['Sp. Atk'] + \
+#                       pokemon_df['Sp. Def'] + pokemon_df['Speed']
+
+'''Dropping the added Column'''
+# pokemon_df = pokemon_df.drop(columns=['Total'])
+
+'''Adding Column through indexing'''
+pokemon_df['Total'] = pokemon_df.iloc[:, 4:10].sum(axis=1)
+# print(pokemon_df.head(5))
+
+'''Getting Column as List'''
+col = list(pokemon_df.columns)
+# print(col)
+pokemon_df = pokemon_df[col[0:4] + [col[-1]] + col[4:12]]
+print(pokemon_df.columns)
