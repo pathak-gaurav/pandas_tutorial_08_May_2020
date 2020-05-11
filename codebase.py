@@ -53,8 +53,8 @@ pokemon_df = pd.read_csv("pokemon_data.csv")
 
 # print(pokemon_df.columns)
 '''Adding a Column in DF'''
-pokemon_df['Total'] = pokemon_df['HP'] + pokemon_df['Attack'] + pokemon_df['Defense'] + pokemon_df['Sp. Atk'] + \
-                      pokemon_df['Sp. Def'] + pokemon_df['Speed']
+# pokemon_df['Total'] = pokemon_df['HP'] + pokemon_df['Attack'] + pokemon_df['Defense'] + pokemon_df['Sp. Atk'] + \
+#                       pokemon_df['Sp. Def'] + pokemon_df['Speed']
 
 '''Dropping the added Column'''
 # pokemon_df = pokemon_df.drop(columns=['Total'])
@@ -64,9 +64,9 @@ pokemon_df['Total'] = pokemon_df['HP'] + pokemon_df['Attack'] + pokemon_df['Defe
 # print(pokemon_df.head(5))
 
 '''Getting Column as List'''
-col = list(pokemon_df.columns)
+# col = list(pokemon_df.columns)
 # # print(col)
-pokemon_df = pokemon_df[col[0:4] + [col[-1]] + col[4:12]]
+# pokemon_df = pokemon_df[col[0:4] + [col[-1]] + col[4:12]]
 # print(pokemon_df.columns)
 
 '''========================='''
@@ -79,4 +79,33 @@ pokemon_df = pokemon_df[col[0:4] + [col[-1]] + col[4:12]]
 # pokemon_df.to_excel("modified-total-column.xlsx",index=False)
 
 '''Saving file as a txt'''
-pokemon_df.to_csv('modified-total-column.txt',index=False,sep='\t')
+# pokemon_df.to_csv('modified-total-column.txt',index=False,sep='\t')
+
+'''=============='''
+'''Filtering Data'''
+'''=============='''
+
+# print(pokemon_df.loc[(pokemon_df['Type 1']== 'Grass') | (pokemon_df['Type 2']=='Poison') ])
+
+'''Resetting Index and setting back again in DF'''
+# pokemon_df.reset_index(inplace=True)
+
+'''Setting a new Index'''
+# pokemon_df.set_index(pokemon_df['Name'],inplace=True)
+# print(pokemon_df.head(4))
+
+'''Name which contains String Mega'''
+# print(pokemon_df.loc[pokemon_df['Name'].str.contains('Mega')])
+
+'''Name which does NOT contains String Mega'''
+# print(pokemon_df.loc[~ pokemon_df['Name'].str.contains('Mega')])
+
+'''Searching Data using regular Expression'''
+import re as regex
+# print(pokemon_df.loc[pokemon_df['Type 1'].str.contains('Grass|Fire',regex=True)].head(10))
+
+'''Ignore Camel Case in Regex'''
+# print(pokemon_df.loc[pokemon_df['Type 1'].str.contains('grass|fire',regex=True,flags=regex.IGNORECASE)].head(10))
+
+'''Regular Expression starting with Name pi '''
+print(pokemon_df.loc[pokemon_df['Name'].str.contains('^pi[a-z]',flags=regex.IGNORECASE,regex=True)].head(20))
