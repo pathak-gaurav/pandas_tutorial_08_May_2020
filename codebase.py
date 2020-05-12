@@ -108,4 +108,30 @@ import re as regex
 # print(pokemon_df.loc[pokemon_df['Type 1'].str.contains('grass|fire',regex=True,flags=regex.IGNORECASE)].head(10))
 
 '''Regular Expression starting with Name pi '''
-print(pokemon_df.loc[pokemon_df['Name'].str.contains('^pi[a-z]',flags=regex.IGNORECASE,regex=True)].head(20))
+# print(pokemon_df.loc[pokemon_df['Name'].str.contains('^pi[a-z]',flags=regex.IGNORECASE,regex=True)].head(20))
+
+
+'''==================='''
+'''Conditional Changes'''
+'''==================='''
+
+'''Updating an Column value from Fire to Flamable'''
+# pokemon_df.loc[pokemon_df['Type 1']=='Fire', 'Type 1'] = 'Flamable'
+# print(pokemon_df.loc[pokemon_df['Type 1']=='Flamable'])
+
+'''Reverting Flamable back to Fire'''
+# pokemon_df.loc[pokemon_df['Type 1']=='Flamable', 'Type 1']='Fire'
+# print(pokemon_df.loc[pokemon_df['Type 1']=='Fire'])
+
+'''Changing All Fire Pokemon Legendary values to True'''
+# print(pokemon_df.loc[(pokemon_df['Type 1']=='Fire') & (pokemon_df['Legendary']==False)])
+# pokemon_df.loc[(pokemon_df['Type 1']=='Fire') & (pokemon_df['Legendary']==False) ,'Legendary']=True
+# print(pokemon_df.loc[(pokemon_df['Type 1']=='Fire') & (pokemon_df['Legendary']==True)])
+
+'''Updating two column values simultaneously with same value'''
+# pokemon_df.loc[pokemon_df['Type 1']=='Fire',['Generation','Legendary']] = 'TEST VALUE'
+# print(pokemon_df.head(10))
+
+'''Updating two column values simultaneously with different value'''
+pokemon_df.loc[pokemon_df['Type 1']=='Fire',['Generation','Legendary']] = ['Test 1','Test 2']
+print(pokemon_df.head(10))
