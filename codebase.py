@@ -151,8 +151,26 @@ import re as regex
 # print(pokemon_df.groupby(['Type 1']).sum())
 
 '''Counting the type of Pokemon'''
-pokemon_df['Count'] = 1
+# pokemon_df['Count'] = 1
 # print(pokemon_df.groupby(['Type 1']).count()['Count'])
 
 '''Counting the type of Pokemon based on Type 1 & Type 2'''
-print(pokemon_df.groupby(['Type 1','Type 2']).count()['Count'])
+# print(pokemon_df.groupby(['Type 1','Type 2']).count()['Count'])
+
+'''=================================='''
+'''Working with large amounts of data'''
+'''=================================='''
+
+'''Reading data in Chunk'''
+# pokemon_df_chunk = pd.read_csv('pokemon_data.csv',chunksize=5)
+# for i in pokemon_df_chunk:
+#     print(i)
+
+pokemon_df_new = pd.DataFrame(columns=pokemon_df.columns)
+for pokemon_df_chunk in pd.read_csv('pokemon_data.csv',chunksize=5):
+    results = pokemon_df_chunk.groupby(['Type 1']).count()
+
+    pokemon_df_new = pd.concat([pokemon_df_new,results])
+
+
+print(pokemon_df_new.head(10))
