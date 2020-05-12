@@ -133,5 +133,26 @@ import re as regex
 # print(pokemon_df.head(10))
 
 '''Updating two column values simultaneously with different value'''
-pokemon_df.loc[pokemon_df['Type 1']=='Fire',['Generation','Legendary']] = ['Test 1','Test 2']
-print(pokemon_df.head(10))
+# pokemon_df.loc[pokemon_df['Type 1']=='Fire',['Generation','Legendary']] = ['Test 1','Test 2']
+# print(pokemon_df.head(10))
+
+'''=================================='''
+'''Aggregate Statistics using Groupby'''
+'''=================================='''
+# pokemon_df = pd.read_csv('pokemon_data.csv')
+
+'''Finding mean of Type 1 Pokemon'''
+# print(pokemon_df.groupby(['Type 1']).mean())
+
+'''Finding mean of Type 1 Pokemon with Highest Defense'''
+# print(pokemon_df.groupby(['Type 1']).mean().sort_values('Defense',ascending=False))
+
+'''Sum of all Similar type of Pokemon'''
+# print(pokemon_df.groupby(['Type 1']).sum())
+
+'''Counting the type of Pokemon'''
+pokemon_df['Count'] = 1
+# print(pokemon_df.groupby(['Type 1']).count()['Count'])
+
+'''Counting the type of Pokemon based on Type 1 & Type 2'''
+print(pokemon_df.groupby(['Type 1','Type 2']).count()['Count'])
